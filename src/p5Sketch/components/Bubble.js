@@ -25,6 +25,16 @@ export default class Bubble {
     }
   }
 
+  mouseDragged() {
+    let { s, position, w, h } = this;
+    if(window.store.selected && window.store.selected.object.id == this.id) {
+      this.position = s.createVector(
+        s.lerp(position.x, s.mouseX-w/2, 0.3),
+        s.lerp(position.y, s.mouseY-h/2, 0.3)
+      );
+    }
+  }
+
   draw() {
     let { s, position, w, h, borderRadius } = this;
     

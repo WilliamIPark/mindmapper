@@ -16,6 +16,9 @@ const sketch = new p5(function (s) {
     s.clear();
     drawBackground(s);
 
+    s.fill(0);
+    s.text(Math.ceil(s.frameRate()), 10, 10);
+
     Object.values(window.store.objs.bubbles).map(bubble => {
       bubble.draw();
     });
@@ -30,6 +33,12 @@ const sketch = new p5(function (s) {
   s.mouseReleased = function() {
     window.store.selected = undefined;
     console.log('selected', window.store.selected ? true : false);
+  }
+
+  s.mouseDragged = function() {
+    Object.values(window.store.objs.bubbles).map(bubble => {
+      bubble.mouseDragged();
+    });
   }
 
   s.windowResized = function() {

@@ -1,12 +1,14 @@
-import Bubble from '../components/Bubble';
+import generateUUID from './generateUUID';
 
 const initStore = function(sketch) {
   window.store = {
     sketch,
+    generateUUID,
+    selected: undefined, //{object:<Bubble>, type: 'Bubble'}
     objs: {
-      bubbles: [
-        //new Bubble(sketch, 0, 10, 10, 50, 50),
-      ],
+      bubbles: {
+        //new Bubble(sketch, id, 0, 10, 10, 50, 50),
+      },
     },
   };
 }

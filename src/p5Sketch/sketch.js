@@ -15,11 +15,22 @@ const sketch = new p5(function (s) {
   s.draw = function () {
     s.clear();
     drawBackground(s);
-    
-    window.store.objs.bubbles.map(bubble => {
+
+    Object.values(window.store.objs.bubbles).map(bubble => {
       bubble.draw();
     });
   };
+
+  s.mousePressed = function() {
+    Object.values(window.store.objs.bubbles).map(bubble => {
+      bubble.mousePressed();
+    });
+  }
+
+  s.mouseReleased = function() {
+    window.store.selected = undefined;
+    console.log('selected', window.store.selected ? true : false);
+  }
 
   s.windowResized = function() {
     s.resizeCanvas(window.innerWidth, window.innerHeight)

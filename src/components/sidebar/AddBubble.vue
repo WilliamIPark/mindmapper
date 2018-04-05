@@ -9,9 +9,10 @@ export default {
   name: 'AddBubble',
   methods:{
     addBubble: function() {
-      window.store.objs.bubbles.push(
-        new Bubble(window.store.sketch, 0, 50, 50, 100, 100)
-      )
+      let id = window.store.generateUUID();
+      window.store.objs.bubbles[id] = new Bubble(
+        window.store.sketch, id, 50, 50, 100, 100,
+      );
     }
   }
 }
